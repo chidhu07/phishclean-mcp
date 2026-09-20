@@ -1,0 +1,42 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.chidhu07/phishclean",
+  "title": "PhishClean",
+  "description": "Check URLs, emails, headers, JWTs and code for phishing and leaked secrets via PhishClean.",
+  "websiteUrl": "https://www.phishclean.com/developers",
+  "repository": {
+    "url": "https://github.com/chidhu07/phishclean-mcp",
+    "source": "github"
+  },
+  "icons": [
+    {
+      "src": "https://www.phishclean.com/icon-192.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "192x192"
+      ]
+    }
+  ],
+  "version": "1.1.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "phishclean-mcp",
+      "version": "1.1.1",
+      "runtimeHint": "npx",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "PHISHCLEAN_API_KEY",
+          "description": "Optional PhishClean API key for higher rate limits (free tier is 30 requests/hour without one)",
+          "isRequired": false,
+          "isSecret": true,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}
