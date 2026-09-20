@@ -1,0 +1,47 @@
+{
+  "name": "phishclean-mcp",
+  "version": "1.1.1",
+  "description": "MCP server for PhishClean security analysis tools — check URLs, passwords, emails, headers, JWTs, and source code for security issues",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "phishclean-mcp": "./index.js"
+  },
+  "files": [
+    "index.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chidhu07/phishclean-mcp.git"
+  },
+  "homepage": "https://github.com/chidhu07/phishclean-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/chidhu07/phishclean-mcp/issues"
+  },
+  "author": "PhishClean <support@phishclean.com> (https://www.phishclean.com)",
+  "license": "MIT",
+  "keywords": [
+    "mcp",
+    "mcp-server",
+    "model-context-protocol",
+    "phishing",
+    "anti-phishing",
+    "security",
+    "phishclean",
+    "url-checker",
+    "password-checker",
+    "jwt",
+    "secret-scanning",
+    "claude",
+    "claude-desktop",
+    "claude-code"
+  ],
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}
