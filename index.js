@@ -6,9 +6,14 @@ import { ListToolsRequestSchema, CallToolRequestSchema } from "@modelcontextprot
 const API_BASE = process.env.PHISHCLEAN_API_URL || "https://www.phishclean.com";
 const API_KEY = process.env.PHISHCLEAN_API_KEY || "";
 
+// Every tool only analyzes the input it is given and returns a report; the only side effect
+// is a call to the PhishClean API, hence openWorldHint.
+const ANNOTATIONS = { readOnlyHint: true, destructiveHint: false, idempotentHint: true, openWorldHint: true };
+
 const TOOLS = [
   {
     name: "check_link",
+    title: "Check link for phishing",
     description: "Check a URL for phishing signals including domain spoofing, suspicious TLDs, IP addresses, HTTPS downgrades, token leaks, and more. Returns risk level and detailed signals.",
     inputSchema: {
       type: "object",
@@ -20,6 +25,7 @@ const TOOLS = [
   },
   {
     name: "check_password",
+    title: "Check password strength",
     description: "Analyze password strength. Checks length, character variety, common passwords, keyboard walks, dictionary words, date patterns, and calculates entropy and estimated crack time.",
     inputSchema: {
       type: "object",
@@ -31,6 +37,7 @@ const TOOLS = [
   },
   {
     name: "check_email",
+    title: "Check email for phishing",
     description: "Analyze email body text for phishing indicators: urgency language, threats, credential requests, suspicious links, generic greetings, and attachment references.",
     inputSchema: {
       type: "object",
@@ -42,6 +49,7 @@ const TOOLS = [
   },
   {
     name: "analyze_headers",
+    title: "Analyze email headers",
     description: "Analyze raw email headers to check SPF/DKIM/DMARC authentication, trace relay hops, and detect email spoofing indicators.",
     inputSchema: {
       type: "object",
@@ -53,6 +61,7 @@ const TOOLS = [
   },
   {
     name: "decode_jwt",
+    title: "Decode and audit JWT",
     description: "Decode a JSON Web Token and check for security issues: expired tokens, algorithm 'none', weak algorithms, sensitive data in claims, very long expiration, missing standard claims.",
     inputSchema: {
       type: "object",
@@ -64,6 +73,7 @@ const TOOLS = [
   },
   {
     name: "scan_secrets",
+    title: "Scan code for leaked secrets",
     description: "Scan source code for leaked secrets: AWS keys, Stripe keys, GitHub tokens, Google API keys, Slack tokens, Twilio keys, SendGrid keys, private keys, bearer tokens, and more.",
     inputSchema: {
       type: "object",
@@ -75,6 +85,7 @@ const TOOLS = [
   },
   {
     name: "scan_page",
+    title: "Scan web page for phishing",
     description: "Full security page scan — analyzes a web page for 12 phishing/security signals including password fields, domain mismatches, hidden iframes, JWT in URL, hardcoded secrets, and more. Returns a risk score.",
     inputSchema: {
       type: "object",
@@ -90,15 +101,17 @@ const TOOLS = [
 ];
 
 const server = new Server(
-  { name: "phishclean", version: "1.1.0" },
+  { name: "phishclean", version: "1.1.2" },
   { capabilities: { tools: {} } }
 );
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: TOOLS.map(t => ({
     name: t.name,
+    title: t.title,
     description: t.description,
-    inputSchema: t.inputSchema
+    inputSchema: t.inputSchema,
+    annotations: { title: t.title, ...ANNOTATIONS }
   }))
 }));
 

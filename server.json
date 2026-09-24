@@ -17,13 +17,13 @@
       ]
     }
   ],
-  "version": "1.1.1",
+  "version": "1.1.2",
   "packages": [
     {
       "registryType": "npm",
       "registryBaseUrl": "https://registry.npmjs.org",
       "identifier": "phishclean-mcp",
-      "version": "1.1.1",
+      "version": "1.1.2",
       "runtimeHint": "npx",
       "transport": {
         "type": "stdio"

@@ -1,6 +1,6 @@
 {
   "name": "phishclean-mcp",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "mcpName": "io.github.chidhu07/phishclean",
   "description": "MCP server for PhishClean security analysis tools — check URLs, passwords, emails, headers, JWTs, and source code for security issues",
   "type": "module",
@@ -43,6 +43,6 @@
     "claude-code"
   ],
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.0.0"
+    "@modelcontextprotocol/sdk": "^1.30.1"
   }
 }
