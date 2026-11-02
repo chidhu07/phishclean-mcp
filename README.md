@@ -16,6 +16,22 @@ Or add it to Claude Code in one line:
 claude mcp add phishclean -- npx -y phishclean-mcp
 ```
 
+## Remote server (Claude connector)
+
+No install needed: PhishClean also runs as a remote MCP server at
+
+```
+https://www.phishclean.com/mcp
+```
+
+In Claude (web, desktop or mobile): **Customize → Connectors → + → Add custom connector**, name it PhishClean, and paste that URL. No sign-in is needed. In Claude Code:
+
+```bash
+claude mcp add --transport http phishclean https://www.phishclean.com/mcp
+```
+
+The remote server has the same tools as this package except `check_password`, so nobody is invited to type a real password into a chat. Every tool is read-only and runs the same scanner as the matching `/api/v1` endpoint, in memory, without fetching anything. Limits: 1,000 tool calls an hour per IP without a key, or your plan's limit with `Authorization: Bearer pk_live_…`.
+
 ## Claude Desktop Setup
 
 Add to your `claude_desktop_config.json`:
@@ -99,6 +115,16 @@ Override the base URL with:
 ```bash
 PHISHCLEAN_API_URL=http://localhost:3000 npx phishclean-mcp
 ```
+
+## Privacy policy
+
+Both the npm package and the remote server at `https://www.phishclean.com/mcp` handle data the same way:
+
+- **Collected:** only the arguments of each tool call (a URL, email text, headers, a token, source code or page HTML), plus your IP address or API key for rate limiting.
+- **Use and storage:** arguments are analysed in memory and discarded when the response is sent. They are not stored or logged. Rate-limit counters (IP or key hash, hourly count) are deleted after a few hours.
+- **Third parties:** nothing is shared or sold. The scanners make no outbound requests.
+- **Retention:** none for tool arguments; a few hours for rate-limit counters.
+- **Contact:** https://www.phishclean.com/contact. Full policy: https://www.phishclean.com/privacy
 
 ## What this server sends, and where
 
