@@ -1,6 +1,6 @@
 # phishclean-mcp
 
-[![npm](https://img.shields.io/npm/v/phishclean-mcp)](https://www.npmjs.com/package/phishclean-mcp) [![license](https://img.shields.io/npm/l/phishclean-mcp)](LICENSE)
+[![npm](https://img.shields.io/npm/v/phishclean-mcp)](https://www.npmjs.com/package/phishclean-mcp) [![license](https://img.shields.io/npm/l/phishclean-mcp)](LICENSE) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/chidhu07/phishclean-mcp/badge)](https://scorecard.dev/viewer/?uri=github.com/chidhu07/phishclean-mcp)
 
 MCP server for [PhishClean](https://www.phishclean.com) security analysis tools. Works with Claude Desktop, Claude Code, Gemini CLI, and any MCP-compatible client.
 
